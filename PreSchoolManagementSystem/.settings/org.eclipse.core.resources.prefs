@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//src/main/java/TDSchool/com/controller/LoginController.java=UTF-8
+encoding//src/main/java/TDSchool/com/controller/LopController.java=UTF-8
+encoding//src/main/java/TDSchool/com/controller/SMSController.java=UTF-8
+encoding//src/main/java/TDSchool/com/dao/SmsDAOImpl.java=UTF-8
+encoding//src/main/java/TDSchool/com/model/Sms.java=UTF-8
+encoding//src/main/webapp/WEB-INF/views/home.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/sendmailsuccess.jsp=UTF-8
+encoding//src/main/webapp/resources/common/headeradmin.jsp=UTF-8
+encoding//src/main/webapp/resources/home/css/style.css=UTF-8

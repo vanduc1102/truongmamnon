@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>       
+  <session-factory>
+    <!-- Database connection settings -->
+    <property name="dialect">org.hibernate.dialect.SQLServerDialect</property>
+    <property name="show_sql">true</property>
+     
+    <mapping class="TDSchool.com.model.Hocsinh"/>
+    <mapping class="TDSchool.com.model.Giaovien"/>
+    <mapping class="TDSchool.com.model.Baomau"/>
+    <mapping class="TDSchool.com.model.Lop"/>
+    <mapping class="TDSchool.com.model.Xeplop"/>
+    <mapping class="TDSchool.com.model.Monhoc"/>
+    <mapping class="TDSchool.com.model.Suckhoebenam"/>
+    <mapping class="TDSchool.com.model.Suckhoebenu"/>
+    <mapping class="TDSchool.com.model.Chuansuckhoe"/>
+    <mapping class="TDSchool.com.model.Lichhdkhoitre"/>
+    <mapping class="TDSchool.com.model.Lichhdmaugiao"/>
+    <mapping class="TDSchool.com.model.RegisterAccount" />
+    <mapping class="TDSchool.com.model.LoginAccount" />
+    <mapping class="TDSchool.com.model.Role" />
+    <mapping class="TDSchool.com.model.Sms" />
+    <mapping class="TDSchool.com.model.Thuchi"/>
+    <mapping class="TDSchool.com.model.Thucdontrongtuan"/>
+    
+    
+  </session-factory>
+</hibernate-configuration>
