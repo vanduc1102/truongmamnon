@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/security
+    http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<security:http auto-config="true">
+		<security:intercept-url pattern="/admin*"
+			access="ROLE_HOST, ROLE_GUEST, ROLE_ADMIN" />
+			
+			<!-- Quyen Giao Vien -->
+		<security:intercept-url pattern="/admin/teacher/*" access="ROLE_HOST" />
+			<!-- Quyen Giao Vien -->
+			
+			<!-- Quyen Phu Huynh -->
+		<security:intercept-url pattern="/admin/parent/*" access="ROLE_GUEST" />
+			<!-- Quyen Phu Huynh -->
+		<security:intercept-url pattern="/account*" access="ROLE_ADMIN" />
+			<!-- Quyen Admin -->
+		<security:intercept-url pattern="/admin/manage/*" access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/admin/Hocsinh" access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/admin/Baomau" access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/admin/Giaovien" access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/admin/Lop" access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/admin/Xeplop" access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/admin/Monhoc" access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/admin/Chuansuckhoe" access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/admin/Lichhdkhoitre" access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/admin/Lichhdmaugiao" access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/admin/Suckhoebenam" access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/admin/Suckhoebenu" access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/admin/Thuchi" access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/admin/Thucdontrongtuan" access="ROLE_ADMIN" />
+			<!-- Quyen Admin -->
+
+		<security:form-login login-page="/login"
+			default-target-url="/admin" authentication-failure-url="/fail2login" />
+			
+		
+		<security:form-login login-page="/login"
+			default-target-url="/admin/teacher/{username}"
+			authentication-failure-url="/fail2login" />
+		<security:form-login login-page="/login"
+			default-target-url="/admin/parent/{username}"
+			authentication-failure-url="/fail2login" />
+		<security:form-login login-page="/login"
+			default-target-url="/admin/manage/{username}"
+			authentication-failure-url="/fail2login" />
+			
+		<security:logout logout-success-url="/logout" />
+	</security:http>
+
+
+	<security:authentication-manager>
+		<security:authentication-provider>
+
+			<security:jdbc-user-service
+				data-source-ref="dataSource"
+				users-by-username-query="select user_name, password, enabled, role_id from accounts where user_name = ?"
+				authorities-by-username-query="select a.user_name, r.authority from accounts a, roles r where r.role_id = a.role_id 
+				and a.user_name = ?" />
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+		<property name="url"
+			value="jdbc:sqlserver://localhost:1433;databaseName=TruongMamNon" />
+		<property name="username" value="sa" />
+		<property name="password" value="123456789" />
+	</bean>
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+
+		<property name="basename" value="/WEB-INF/message" />
+	</bean>
+
+</beans>

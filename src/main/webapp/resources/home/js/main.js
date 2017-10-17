@@ -1,0 +1,1 @@
+var config = jQuery.parseJSON(cp_wowslider.config);
